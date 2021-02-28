@@ -13,15 +13,21 @@ class RestaurantServiceTest {
     Restaurant restaurant;
     //REFACTOR ALL THE REPEATED LINES OF CODE
 
+    @BeforeEach
+    public void set() {
+        restaurant = new Restaurant("Restuarant 1", "New Delhi", LocalTime.parse("10:00:00"), LocalTime.parse("22:00:00"));
+        restaurant.addToMenu("Dish 1", 100);
+        restaurant.addToMenu("Dish 2", 200);
+    }
 
     //>>>>>>>>>>>>>>>>>>>>>>SEARCHING<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     @Test
     public void searching_for_existing_restaurant_should_return_expected_restaurant_object() throws restaurantNotFoundException {
-      service.addRestaurant("vishnu hotel","sahibabad",LocalTime.parse("10:30:00"),LocalTime.parse("22:00:00"));
+      service.addRestaurant("Restaurant 1","New Delhi",LocalTime.parse("10:30:00"),LocalTime.parse("22:00:00"));
 
-        restaurant= service.findRestaurantByName("vishnu hotel");
+        restaurant= service.findRestaurantByName("Restaurant 1");
 
-        Assertions.assertEquals("vishnu hotel",restaurant.getName());
+        Assertions.assertEquals("Restaurant 1",restaurant.getName());
         //WRITE UNIT TEST CASE HERE
     }
 
@@ -30,7 +36,7 @@ class RestaurantServiceTest {
     public void searching_for_non_existing_restaurant_should_throw_exception() throws restaurantNotFoundException {
 
         //WRITE UNIT TEST CASE HERE
-        restaurant= service.addRestaurant("vishnu hotel","sahibabad",LocalTime.parse("10:30:00"),LocalTime.parse("22:00:00"));
+        restaurant= service.addRestaurant("Restaurant 1","New Delhi",LocalTime.parse("10:30:00"),LocalTime.parse("22:00:00"));
 
         //service.findRestaurantByName("vaishno hotel");
 
@@ -48,8 +54,8 @@ class RestaurantServiceTest {
         LocalTime openingTime = LocalTime.parse("10:30:00");
         LocalTime closingTime = LocalTime.parse("22:00:00");
         restaurant = service.addRestaurant("Amelie's cafe","Chennai",openingTime,closingTime);
-        restaurant.addToMenu("Sweet corn soup",119);
-        restaurant.addToMenu("Vegetable lasagne", 269);
+        restaurant.addToMenu("Dish 1",119);
+        restaurant.addToMenu("Dish 2", 269);
 
         int initialNumberOfRestaurants = service.getRestaurants().size();
         service.removeRestaurant("Amelie's cafe");
@@ -61,8 +67,8 @@ class RestaurantServiceTest {
         LocalTime openingTime = LocalTime.parse("10:30:00");
         LocalTime closingTime = LocalTime.parse("22:00:00");
         restaurant = service.addRestaurant("Amelie's cafe","Chennai",openingTime,closingTime);
-        restaurant.addToMenu("Sweet corn soup",119);
-        restaurant.addToMenu("Vegetable lasagne", 269);
+        restaurant.addToMenu("Dish 1",119);
+        restaurant.addToMenu("Dish 2", 269);
 
         assertThrows(restaurantNotFoundException.class,()->service.removeRestaurant("Pantry d'or"));
     }
@@ -72,8 +78,8 @@ class RestaurantServiceTest {
         LocalTime openingTime = LocalTime.parse("10:30:00");
         LocalTime closingTime = LocalTime.parse("22:00:00");
         restaurant = service.addRestaurant("Amelie's cafe","Chennai",openingTime,closingTime);
-        restaurant.addToMenu("Sweet corn soup",119);
-        restaurant.addToMenu("Vegetable lasagne", 269);
+        restaurant.addToMenu("Dish 1",119);
+        restaurant.addToMenu("Dish 2", 269);
 
         int initialNumberOfRestaurants = service.getRestaurants().size();
         service.addRestaurant("Pumpkin Tales","Chennai",LocalTime.parse("12:00:00"),LocalTime.parse("23:00:00"));
@@ -86,8 +92,8 @@ class RestaurantServiceTest {
 
 
         List<String> myOrders= new ArrayList<>();
-        myOrders.add("chilly potato");
-        myOrders.add("paneer pasanda");
+        myOrders.add("Dish 1");
+        myOrders.add("Dish 2");
         Assertions.assertEquals(300,restaurant.getTotalValue(myOrders));
 
 

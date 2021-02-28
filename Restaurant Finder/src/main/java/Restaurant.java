@@ -3,7 +3,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Restaurant  {
+public class Restaurant implements org.junit.jupiter.api.function.Executable {
     private String name;
     private String location;
     public LocalTime openingTime;
@@ -76,6 +76,23 @@ public class Restaurant  {
     public String getName() {
         return name;
     }
+
+    public int getTotalValue(List<String> itemName)
+    {
+        int value=0;
+        for(String name: itemName)
+        {
+            Item item=findItemByName(name);
+            value=value + item.getPrice();
+        }
+        return  value;
+    }
+
+    @Override
+    public void execute() throws Throwable {
+
+    }
+
 
 }
 
