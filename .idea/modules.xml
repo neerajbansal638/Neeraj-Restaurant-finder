@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/c3_project_utsav-master.iml" filepath="$PROJECT_DIR$/.idea/c3_project_utsav-master.iml" />
-      <module fileurl="file://$PROJECT_DIR$/c3_project_utsav-master/library-demo.iml" filepath="$PROJECT_DIR$/c3_project_utsav-master/library-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Restaurant Finder.iml" filepath="$PROJECT_DIR$/.idea/Restaurant Finder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Restaurant Finder/Restaurant_project.iml" filepath="$PROJECT_DIR$/Restaurant Finder/Restaurant_project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Restaurant Finder/library-demo.iml" filepath="$PROJECT_DIR$/Restaurant Finder/library-demo.iml" />
     </modules>
   </component>
 </project>

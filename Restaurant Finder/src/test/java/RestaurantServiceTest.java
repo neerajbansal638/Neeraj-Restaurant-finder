@@ -78,7 +78,31 @@ class RestaurantServiceTest {
         int initialNumberOfRestaurants = service.getRestaurants().size();
         service.addRestaurant("Pumpkin Tales","Chennai",LocalTime.parse("12:00:00"),LocalTime.parse("23:00:00"));
         assertEquals(initialNumberOfRestaurants + 1,service.getRestaurants().size());
-    }}
+    }
+    @Test
+
+    public void select_item_from_menu_of_restaruant_and_return_total_cost_of_items()
+    {
+
+
+        List<String> myOrders= new ArrayList<>();
+        myOrders.add("chilly potato");
+        myOrders.add("paneer pasanda");
+        Assertions.assertEquals(300,restaurant.getTotalValue(myOrders));
+
+
+    }
+    @Test
+    public void selecting_non_existing_item_from_restaurant_should_throw_null_point_nullpointexception()
+    {
+        List<String> myOrders= new ArrayList<>();
+        myOrders.add("pastry");
+        myOrders.add("icecream");
+        Assertions.assertThrows(NullPointerException.class,()->restaurant.getTotalValue(myOrders));
+    }
+
+
+}
     //<<<<<<<<<<<<<<<<<<<<ADMIN: ADDING & REMOVING RESTAURANTS>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<menu>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
